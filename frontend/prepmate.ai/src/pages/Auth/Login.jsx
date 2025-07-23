@@ -4,12 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import Input from '../../components/inputs/input.jsx'
 import SignUp from '../Auth/SignUp.jsx';
 import validateEmail  from '../../utils/helper.js';
+import axiosInstance from '../../utils/axiosinstance.js';
+import { API_PATHS } from '../../utils/apiPath.js';
+import { UserContext } from '../../Context/userContext.jsx';
+import { useContext } from 'react';
 
 const Login = ({setCurrentPage}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
 
+    const {updateUser} = useContext(UserContext);
     const navigate = useNavigate();
 
     // Hanld login submission
@@ -31,7 +36,18 @@ const Login = ({setCurrentPage}) => {
         // login Api call
 
         try{
-
+            const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
+                email,
+                password,
+            });
+            console.log(response.data.data);
+            const token = response.data.data.token;
+            
+            if(token) {
+                localStorage.setItem("token", token);
+                updateUser(response.data.data)
+                navigate("/dashboard");
+            }
         }
         catch (e){
             if(e.response && e.response.data.message){

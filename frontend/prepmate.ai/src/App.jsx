@@ -7,31 +7,34 @@ import Signup from './pages/Auth/SignUp'
 import LandingPage from './pages/LandingPage'
 import Dashboard from './pages/Home/Dashboard'
 import PrepMate from './pages/PrepMate/PrepMate'
+import UserProvider from './Context/userContext'
 
 function App() {
 
   return (
-    <div>
-      <Router>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/prep" element={<PrepMate />} />
-        </Routes>
-        
-        <Toaster
-        toastOptions={{
-          className: "",
-          style: {
-            fontSize: "13px",
-          },
-        }} />
+    <UserProvider>
+      <div>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/prep/:id" element={<PrepMate />} />
+          </Routes>
+          
+          <Toaster
+          toastOptions={{
+            className: "",
+            style: {
+              fontSize: "13px",
+            },
+          }} />
 
-      </Router>
+        </Router>
 
-    </div>
+      </div>
+    </UserProvider>
   )
 }
 

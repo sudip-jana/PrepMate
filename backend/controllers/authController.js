@@ -38,8 +38,16 @@ export const registerUser = async (req, res) => {
             .json(new apiResponse(false, "user not created", {}));
         }
 
+        const userData = {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            profileImageUrl: user.profileImageUrl,
+            token: generateToken(user._id),
+        };
+
         return res.status(201)
-        .json(new apiResponse(true, "User registered successfully",user))
+        .json(new apiResponse(true,"user logged In", userData));
     }catch (err){
         return res
       .status(500)

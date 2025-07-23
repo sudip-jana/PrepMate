@@ -36,7 +36,7 @@ Task:
 
 {
     "title": "Short title here?",
-    "explaination": "Explaination here."
+    "explanation": "Explanation here."
 }
 
 Important: Do not add any extra text outside the JSON format. Only return valid JSON.

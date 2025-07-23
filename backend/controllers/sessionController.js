@@ -7,7 +7,7 @@ export const createSession = async (req, res) => {
     try {
         const {role, experience, topicsToFocus, description, questions} =
         req.body;
-        const userId = req.user._id; // Assuming you have a middleware
+        const userId = req.user?.id; // Assuming you have a middleware
 
         const session = await Session.create({
             user: userId,
@@ -41,13 +41,14 @@ export const createSession = async (req, res) => {
 // get all sessions for the logged-in user
 export const getMySessions = async (req, res) => {
     try {
-        const sessions = await Session.find({user: req.user.id})
+        // console.log("REQ.USER in /my-sessions:", req.user);
+        const sessions = await Session.find({user: req.user?._id})
             .sort({ createdAt: -1})
             .populate("questions");
         if(!sessions){
             return res.status(404).json({message: "Session not found"});
         }
-        res.status(200).json(sessions);
+       return res.status(200).json(sessions);
     } catch (error) {
         res.status(500).json({success: false, message: "Server Error"});
     }
@@ -69,7 +70,7 @@ export const getSessionById = async (req, res) => {
             .json({success: false, message: "Session not found"});
         }
 
-        res.status(200).json({success: true, session});
+       return res.status(200).json({success: true, session});
     } catch (error) {
         res.status(500).json({success: false, message: "Server Error"});
     }

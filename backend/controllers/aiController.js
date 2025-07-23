@@ -12,8 +12,10 @@ export const generateInterviewQuestions = async (req, res) => {
     try {
         const {role, experience, topicsToFocus, numberOfQuestion} =
         req.body;
-
+        console.log(req.body);
+        console.log(role, experience, topicsToFocus, numberOfQuestion)
         if(!role || !experience || !topicsToFocus || !numberOfQuestion) {
+            console.log("hi");
             return res.status(400).json({message: "Missing required fields"});
         }
         
@@ -45,7 +47,37 @@ export const generateInterviewQuestions = async (req, res) => {
     }
 };
 
+// generates explains a interview-question
 
-export const generateConceptExplaination = async (req, res) => {
+export const generateConceptExplanation = async (req, res) => {
+    try{
+        const {question} = req.body;
 
+        if(!question){
+            return res.status(400).json({message: "Missing required fields"});
+        }
+
+        const prompt = conceptExplainPrompt(question);
+
+        const response = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: prompt,
+        });
+
+        let rawText = response.text;
+
+        const cleanedText = rawText
+            .replace(/^```json\s*/, '') // remove starting ```json
+            .replace(/```$/, '')        // remove ending ```
+            .trim();   // remove extra spaces
+
+            const data = JSON.parse(cleanedText);
+
+            res.status(200).json(data);
+    }catch (error) {
+        res.status(500).json({
+            message: "Failed to generate questions",
+            error: error.message,
+        })
+    }
 }
