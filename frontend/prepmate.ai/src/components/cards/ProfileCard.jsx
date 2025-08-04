@@ -14,7 +14,8 @@ const ProfileInfoCard = () => {
     };
 
     if (!user) return null;
-    // console.log(user);
+
+    console.log(user);
 
     return (
         <div className="flex items-center">
