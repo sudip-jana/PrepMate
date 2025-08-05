@@ -151,7 +151,7 @@ import Login from '../pages/Auth/Login.jsx';
 import SignUp from '../pages/Auth/SignUp.jsx';
 import { UserContext } from '../Context/userContext.jsx';
 import ProfileInfoCard from '../components/cards/ProfileCard.jsx';
-import hero from '../assets/hero.png';
+import sample from '../assets/sample.png';
 
 const LandingPage = () => {
   const { user } = useContext(UserContext);
@@ -230,7 +230,7 @@ const LandingPage = () => {
       {/* Hero Image */}
       <div className="w-full min-h-full relative z-10 mb-56">
         <section className="flex items-center justify-center mt-10 md:-mt-36">
-          <img src={hero} alt="Hero Image" className="w-[80vw] rounded-lg" />
+          <img src={sample} alt="Hero Image" className="w-[80vw] rounded-lg" />
         </section>
 
         {/* Features */}
