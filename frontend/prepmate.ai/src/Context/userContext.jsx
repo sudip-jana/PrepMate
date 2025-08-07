@@ -34,9 +34,10 @@ const UserProvider = ({children}) => {
     }, []);
 
     const updateUser = (userData) => {
+        console.log(userData)
         setUser(userData);
         // console.log(userData.token);
-        localStorage.setItem("token", userData.token);
+        localStorage.setItem("token", userData.data.token);
         setLoading(false);
     };
 
