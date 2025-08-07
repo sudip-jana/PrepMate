@@ -40,7 +40,7 @@ const Login = ({setCurrentPage}) => {
                 email,
                 password,
             });
-            console.log(response.data.data);
+            // console.log(response.data.data);
             const token = response.data.data.token;
             
             if(token) {

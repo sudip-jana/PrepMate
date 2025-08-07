@@ -15,7 +15,7 @@ const ProfileInfoCard = () => {
 
     if (!user) return null;
 
-    console.log(user);
+    // console.log(user);
 
     return (
         <div className="flex items-center">
@@ -32,7 +32,7 @@ const ProfileInfoCard = () => {
 )}
             <div>
                 <div className="text-[15px] text-black font-bold leading-3">
-                    {user.data.name[0].toUpperCase()+ user.data.name.slice(1)|| "user"}
+                    {user?.data?.name ? user.data.name.charAt(0).toUpperCase() + user.data.name.slice(1): "User"}
                 </div>
                 <button
                     className="text-amber-600 text-sm font-semibold cursor-pointer hover:underline"

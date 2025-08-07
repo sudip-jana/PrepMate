@@ -55,9 +55,9 @@ const CreateSessionForm = () => {
                 ...formData,
                 questions: generatedQuestions,
             });
-
-            if(response.data?.session?._id){
-                navigate(`/prep/${response.data?.session._id}`);
+            // console.log(response);
+            if(response.data?.data?._id){
+                navigate(`/prep/${response.data?.data?._id}`);
             }
         }catch (err){
             if(error.response && error.response.data.message) {

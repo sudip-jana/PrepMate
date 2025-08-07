@@ -100,9 +100,8 @@ const PrepMate = () => {
           numberOfQuestion: 5,
         }
       )
-      console.log(aiResponse);
+      // console.log(aiResponse);
       const generatedQuestions = aiResponse.data;
-      console.log(sessionId)
       const response = await axiosInstance.post(
         API_PATHS.QUESTION.ADD_TO_SESSION,
         {
@@ -110,7 +109,7 @@ const PrepMate = () => {
           questions: generatedQuestions,
         }
       )
-      console.log(response)
+     
       if(response.data) {
         toast.success("Added More Q&A!!");
         fetchSessionDetailsById();
