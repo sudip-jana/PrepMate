@@ -15,13 +15,13 @@ const ProfileInfoCard = () => {
 
     if (!user) return null;
 
-    // console.log(user);
+    console.log(user);
 
     return (
         <div className="flex items-center">
-            {user?.data?.profileImageUrl ? (
+            {user?.profileImageUrl ? (
   <img
-    src={user.data.profileImageUrl}
+    src={user?.profileImageUrl}
     alt="Profile"
     className="w-11 h-11 bg-gray-300 rounded-full mr-3 object-cover"
   />
@@ -32,7 +32,7 @@ const ProfileInfoCard = () => {
 )}
             <div>
                 <div className="text-[15px] text-black font-bold leading-3">
-                    {user?.data?.name ? user.data.name.charAt(0).toUpperCase() + user.data.name.slice(1): "User"}
+                    {user?.name ? user.name.charAt(0).toUpperCase() + user.name.slice(1): "User"}
                 </div>
                 <button
                     className="text-amber-600 text-sm font-semibold cursor-pointer hover:underline"
