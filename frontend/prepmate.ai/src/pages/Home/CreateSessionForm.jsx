@@ -49,6 +49,7 @@ const CreateSessionForm = () => {
                     numberOfQuestion,
                 }
             );
+            
             const generatedQuestions = apiResponse.data;
 
             const response = await axiosInstance.post(API_PATHS.SESSION.CREATE, {

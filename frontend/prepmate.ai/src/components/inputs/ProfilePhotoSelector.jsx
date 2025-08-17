@@ -67,3 +67,4 @@ const ProfilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
 };
 
 export default ProfilePhotoSelector;
+

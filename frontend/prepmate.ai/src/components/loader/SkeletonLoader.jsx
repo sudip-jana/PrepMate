@@ -1,6 +1,7 @@
 
 const SkeletonLoader = () => {
 
+    
     return (
         <>
             <div role="status" className="animate-pulse space-y-4 max-w-3xl">

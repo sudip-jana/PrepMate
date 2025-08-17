@@ -59,6 +59,7 @@ const SignUp = ({setCurrentPage}) => {
             profileImageUrl,
           });
           
+          
           // console.log(response.data.data);
           const token = response.data.data.token;
           

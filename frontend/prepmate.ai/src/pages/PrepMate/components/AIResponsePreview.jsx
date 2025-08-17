@@ -6,6 +6,7 @@ import { oneLight } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { LuCheck, LuCode, LuCopy } from "react-icons/lu";
 import { Code } from "lucide-react";
 
+
 const AIResponsePreview = ({content}) => {
     if(!content) return null
     return (

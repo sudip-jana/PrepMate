@@ -10,6 +10,7 @@ const RoleInfoHeader = ({
         lastUpdated
 }) => {
 
+    
     return (
         <div className="bg-white relative">
             <div className="container mx-auto px-10 md:px-0">

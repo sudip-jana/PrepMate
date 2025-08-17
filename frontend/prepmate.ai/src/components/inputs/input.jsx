@@ -8,6 +8,7 @@ const Input = ({value,onChange,label,placeholder,type="text"}) => {
         setShowPassword(!showPassword);
     };
 
+    
     return (
         <div>
             <label className="text-[13px] text-slate-800">{label}</label>

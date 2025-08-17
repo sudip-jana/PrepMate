@@ -125,6 +125,7 @@ const PrepMate = () => {
     }
   }
 
+  
   useEffect(() => {
     if(sessionId.id) {
       fetchSessionDetailsById();
